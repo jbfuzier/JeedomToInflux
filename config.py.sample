@@ -1,0 +1,40 @@
+API_KEY = "XXXXXX"
+JEEDOM_BASE_URL = "http://jeedom.example.org"
+JEEDOM_API_URL = JEEDOM_BASE_URL + "/core/api/jeeApi.php"
+INFLUXDB_HOST = 'influxdbhost'
+DEFAULT_START_TIME_DAYS = 30
+INFLUXDB_DATABASE_NAME = 'jeedom'
+DB_PATH = 'db.pickle'
+ALERTA_API_URL = "http://XXXXXXX/api/alert"
+JEEDOM_ALERTA_DB_PATH = 'db_jeedom_alerta.pickle'
+LOGGING_CONF = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'standard': {
+            'format': '%(asctime)-15s - %(process)d %(filename)s@%(funcName)s:%(lineno)d [%(levelname)s] %(name)s: %(message)s'
+        },
+    },
+    'handlers': {
+        'default': {
+            'level': 'WARNING',
+            'formatter': 'standard',
+            'class': 'logging.StreamHandler',
+        },
+        'file': {
+            'level': 'INFO',
+            'formatter': 'standard',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'debug.log',
+            'maxBytes': 1 * 1024 * 1024,
+            'backupCount': 1,
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['default', 'file'],
+            'level': 'DEBUG',
+            'propagate': True
+        },
+    }
+}
